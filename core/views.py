@@ -12,8 +12,10 @@ import re
 @login_required(login_url="/login")
 def index(request):
     movies = Movie.objects.all()
+    featured_movie = movies[len(movies) - 1]
     context = {
         "movies": movies,
+        "featured_movie": featured_movie,
     }
     return render(request, "index.html", context)
 
