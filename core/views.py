@@ -116,6 +116,20 @@ def add_to_list(request):
         )
 
 
+@login_required(login_url="/login")
+def search(request):
+    if request.methood == "POST":
+        search_term = request.POST["search_term"]
+        movies = Movie.objects.filter(title__icontains=search_term)
+        context = {
+            "movies": movies,
+            "search_term": search_term,
+        }
+        return render(request, "search.html", context)
+    else:
+        return redirect("/")
+
+
 @login_required(login_url="login")
 def logout(request):
     auth.logout(request)
