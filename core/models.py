@@ -13,7 +13,8 @@ class Movie(models.Model):
         ('drama', 'Drama'),
         ('horror', 'Horror'),
         ('romance', 'Romance'),
-        ('thriller', 'Thriller'),
+        ('sciencefiction', 'Science Fiction'),
+        ('fantasy', 'Fantasy'),
     )
     
     uu_id = models.UUIDField(default=uuid.uuid4, unique=True)
